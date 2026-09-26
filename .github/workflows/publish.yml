@@ -31,7 +31,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pnpm config set only-built-dependencies esbuild
+          pnpm install --no-frozen-lockfile
+          pnpm approve-builds
           pnpm install
 
       - name: Build library
