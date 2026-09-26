@@ -1,0 +1,46 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - main # El pipeline solo se dispara cuando haces push o merge a la rama main
+
+jobs:
+  publish:
+    name: Build and Publish
+    runs-on: ubuntu-latest
+    
+    # Vinculación con el entorno de npm que configuramos en el panel
+    environment: production 
+    
+    # CONFIGURACIÓN DE SEGURIDAD CRÍTICA
+    permissions:
+      contents: read    # Permite leer el código del repo
+      id-token: write   # Activa el carnet de identidad temporal (OIDC) para npm
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Descarga el código del repo en la máquina virtual
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # Ajustado a tu versión local para evitar inconsistencias
+          cache: 'pnpm'    # Optimiza la velocidad instalando dependencias más rápido
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 # Versión estable del motor de pnpm para GitHub Actions
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile # Instala exactamente lo que dice el lockfile sin cambios
+
+      - name: Build library
+        run: pnpm build # Ejecuta la compilación de Vite para generar la carpeta /dist
+
+      - name: Publish to npm
+        # Este comando usa la conexión "Trusted Publisher" (OIDC)
+        # --no-git-checks: Evita que npm pida que el repo esté limpio
+        # --access public: Asegura que la librería sea pública
+        run: pnpm publish --no-git-checks --access public
