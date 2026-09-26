@@ -1,6 +1,7 @@
 {
   "name": "react-minimal-terminal",
   "version": "0.1.0",
+  "license": "MIT",
   "type": "module",
   "description": "A lightweight, modern animated terminal window for React",
   "main": "./dist/index.js",
@@ -34,5 +35,10 @@
     "vite-plugin-dts": "^3.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
