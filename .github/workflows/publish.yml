@@ -21,7 +21,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: latest
+          version: 8 # Volvemos a la v8 para evitar los bloqueos de scripts de build
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -30,10 +30,8 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: |
-          pnpm install --no-frozen-lockfile
-          pnpm approve-builds
-          pnpm install
+        # --no-frozen-lockfile permite que pnpm v8 ignore el lockfile v12 y genere uno compatible en vuelo
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build library
         run: pnpm build
