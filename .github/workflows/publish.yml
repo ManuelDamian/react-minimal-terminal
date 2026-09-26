@@ -12,7 +12,6 @@ jobs:
     environment: production
     permissions:
       contents: read
-      id-token: write
 
     steps:
       - name: Checkout code
@@ -36,5 +35,6 @@ jobs:
         run: pnpm build
 
       - name: Publish to npm
-        # Usamos npm publish con --provenance para activar la identidad OIDC de GitHub
-        run: npm publish --provenance --access public
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          npm publish --access public
