@@ -21,8 +21,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          # Usamos 'latest' para asegurar compatibilidad con el lockfile v12
-          version: latest 
+          version: latest
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -31,9 +30,9 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        # Usamos install normal inicialmente para sincronizar el lockfile
-        # Una vez que el primer build pase, podemos volver a --frozen-lockfile
-        run: pnpm install
+        run: |
+          pnpm config set only-built-dependencies esbuild
+          pnpm install
 
       - name: Build library
         run: pnpm build
