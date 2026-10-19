@@ -1,5 +1,7 @@
 # ⌨️ react-minimal-terminal
 
+[![npm](https://img.shields.io/npm/v/react-minimal-terminal)](https://www.npmjs.com/package/react-minimal-terminal) [![CI](https://github.com/ManuelDamian/react-minimal-terminal/actions/workflows/ci.yml/badge.svg)](https://github.com/ManuelDamian/react-minimal-terminal/actions/workflows/ci.yml) [![license](https://img.shields.io/npm/l/react-minimal-terminal)](LICENSE)
+
 A professional, highly customizable, and animated terminal component for React. Inspired by the Apple aesthetic, it provides a seamless way to showcase terminal-like interactions in your portfolio or application.
 
 This project is a modern, enhanced version of the original [termynal.js](https://github.com/ines/termynal) by **Ines Montani**, refactored for the React ecosystem with added TypeScript support, improved animations, and extensive customization options.

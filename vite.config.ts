@@ -8,18 +8,20 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
-      include: ['src']
+      include: ['src'],
+      exclude: ['src/main.tsx']
     })
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(import.meta.dirname, 'src/index.ts'),
       name: 'ReactMinimalTerminal',
       fileName: 'index',
-      formats: ['es'] // Solo ESM para evitar conflictos de UMD
+      cssFileName: 'style',
+      formats: ['es']
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'], // Añadimos jsx-runtime como externo
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
