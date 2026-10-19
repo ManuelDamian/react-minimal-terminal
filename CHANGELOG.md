@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+### Fixed
+- Drop the unused `react-dom` peer dependency; the library only imports `react`.
+- Raise the `react` peer range to `>=17.0.0`, which the `react/jsx-runtime` build already required.
+
 ## 0.1.2
 
 ### Security
