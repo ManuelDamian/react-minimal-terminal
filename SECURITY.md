@@ -5,7 +5,7 @@
 We take the security of `react-minimal-terminal` seriously. If you discover a security vulnerability, please do not report it publicly. Instead, follow the process below to ensure a responsible disclosure.
 
 ### How to report
-Please report any security vulnerabilities via the GitHub Issues tab, but mark the issue as a "security report" or contact the maintainer directly if a private disclosure is required.
+Please use GitHub's [private vulnerability reporting](https://github.com/ManuelDamian/react-minimal-terminal/security/advisories/new) so the report stays private until a fix is released. Do not open a public issue for security problems.
 
 ### Our Commitment
 - **Acknowledgement**: You will receive an acknowledgement of your report within 48-72 hours.

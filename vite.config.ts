@@ -8,7 +8,8 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
-      include: ['src']
+      include: ['src'],
+      exclude: ['src/main.tsx']
     })
   ],
   build: {
@@ -16,6 +17,7 @@ export default defineConfig({
       entry: resolve(import.meta.dirname, 'src/index.ts'),
       name: 'ReactMinimalTerminal',
       fileName: 'index',
+      cssFileName: 'style',
       formats: ['es']
     },
     rollupOptions: {
