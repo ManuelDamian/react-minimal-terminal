@@ -13,13 +13,13 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(import.meta.dirname, 'src/index.ts'),
       name: 'ReactMinimalTerminal',
       fileName: 'index',
-      formats: ['es'] // Solo ESM para evitar conflictos de UMD
+      formats: ['es']
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'], // Añadimos jsx-runtime como externo
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
